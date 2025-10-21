@@ -1,0 +1,4 @@
+#!/bin/sh
+cd `dirname $0`
+../src/acc_tsn_network -n .:../src $*
+# for shared lib, use: opp_run -l ../src/acc_tsn_network -n .:../src $*
