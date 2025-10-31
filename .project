@@ -3,6 +3,7 @@
 	<name>ACC_TSN_Network</name>
 	<comment></comment>
 	<projects>
+		<project>inet</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
