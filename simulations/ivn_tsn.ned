@@ -14,63 +14,81 @@
 //
 
 package acc_tsn_network.simulations;
+package inet.networks.tsn;
 import inet.node.ethernet.EthernetLink;
 import inet.node.tsn.TsnDevice;
 import inet.node.tsn.TsnSwitch;
 import ned.IdealChannel;
-
+import inet.networks.base.TsnNetworkBase;
+import inet.node.contract.IEthernetNetworkNode;
+import inet.node.ethernet.EthernetLink;
 
 //
 // TODO documentation
 //
-network Network
+network IVN_TSN_Network extends TsnNetworkBase
 {
     @display("bgb=815,390");
+//    parameters:
+//        *.eth[*].bitrate = default(100Mbps);
     submodules:
         powerTrainECU: TsnDevice {
+            parameters: numEthInterfaces = 1;
             @display("p=88,183");
         }
         usbMediaECU: TsnDevice {
+            parameters: numEthInterfaces = 1;
             @display("p=236,73");
         }
         tirePressureMonitoringECU: TsnDevice {
+            parameters: numEthInterfaces = 1;
             @display("p=236,303");
         }
         laneDetectionECU: TsnDevice {
+            parameters: numEthInterfaces = 1;
             @display("p=419,73");
         }
         brakeECU: TsnDevice {
+            parameters: numEthInterfaces = 1;
             @display("p=599,73");
         }
         infotainmentECU: TsnDevice {
+            parameters: numEthInterfaces = 1;
             @display("p=737,183");
         }
         adaptiveCruiseControlECU: TsnDevice {
+            parameters: numEthInterfaces = 1;
             @display("p=419,303");
         }
         radarDistanceECU: TsnDevice {
+            parameters: numEthInterfaces = 1;
             @display("p=599,303");
         }
         tsnSwitch: TsnSwitch {
+            parameters: numEthInterfaces = 4; // set to number of connected peers
             @display("p=236,182");
         }
         tsnSwitch1: TsnSwitch {
+            parameters: numEthInterfaces = 4;
             @display("p=419,182");
         }
         tsnSwitch2: TsnSwitch {
+            parameters: numEthInterfaces = 4;
             @display("p=599,182");
         }
+
     connections:
         powerTrainECU.ethg[0] <--> EthernetLink <--> tsnSwitch.ethg[0];
-        tsnSwitch.ethg[0] <--> EthernetLink <--> usbMediaECU.ethg[0];
-        tsnSwitch.ethg[0] <--> EthernetLink <--> tsnSwitch1.ethg[0];
-        tsnSwitch.ethg[0] <--> EthernetLink <--> tirePressureMonitoringECU.ethg[0];
-        tsnSwitch1.ethg[0] <--> EthernetLink <--> adaptiveCruiseControlECU.ethg[0];
-        tsnSwitch1.ethg[0] <--> EthernetLink <--> laneDetectionECU.ethg[0];
+        usbMediaECU.ethg[0] <--> EthernetLink <--> tsnSwitch.ethg[1];
+        tsnSwitch.ethg[2]     <--> EthernetLink <--> tsnSwitch1.ethg[0];
+        tirePressureMonitoringECU.ethg[0] <--> EthernetLink <--> tsnSwitch.ethg[3];
+
+        tsnSwitch1.ethg[1] <--> EthernetLink <--> adaptiveCruiseControlECU.ethg[0];
+        tsnSwitch1.ethg[2] <--> EthernetLink <--> laneDetectionECU.ethg[0];
         tsnSwitch2.ethg[0] <--> EthernetLink <--> brakeECU.ethg[0];
-        tsnSwitch2.ethg[0] <--> EthernetLink <--> tsnSwitch1.ethg[0];
-        tsnSwitch2.ethg[0] <--> EthernetLink <--> radarDistanceECU.ethg[0];
-        infotainmentECU.ethg[0] <--> EthernetLink <--> tsnSwitch2.ethg[0];
-        tsnSwitch2.ethg[0] <--> EthernetLink <--> radarDistanceECU.ethg[0];
+        tsnSwitch1.ethg[3] <--> EthernetLink <--> tsnSwitch2.ethg[1];
+
+        tsnSwitch2.ethg[2] <--> EthernetLink <--> radarDistanceECU.ethg[0];
+        infotainmentECU.ethg[0] <--> EthernetLink <--> tsnSwitch2.ethg[3];
 }
 
