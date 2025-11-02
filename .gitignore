@@ -1,0 +1,50 @@
+# OMNeT++ generated files
+# Build artifacts
+*.o
+*.obj
+*.dll
+*.so
+*.lib
+*.a
+*.exe
+*.out
+*.tmp
+*.bak
+*.d
+
+# Simulation results
+*.sca
+*.vec
+*.vci
+*.csv
+*.txt # If your simulations output text logs
+
+# IDE generated files (Eclipse based)
+.settings/
+.project
+.cproject
+.externalToolBuilders/
+.metadata/
+.toolstmp/
+org.eclipse.cdt.core.prefs
+org.eclipse.core.resources.prefs
+out/
+
+# OMNeT++ specific workspace files
+.oppenv/
+
+# User configuration files (often contain local paths or settings)
+configure.user
+
+# NED generated files
+_n.cc
+_n.h
+
+# Qtenv specific files
+.qtenvrc
+
+# Other temporary or log files
+*.log
+*.swp
+*~
+# Any other files you know are generated and should not be version controlled

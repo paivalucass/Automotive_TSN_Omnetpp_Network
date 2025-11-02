@@ -28,9 +28,9 @@ import inet.node.ethernet.EthernetLink;
 //
 network IVN_TSN_Network extends TsnNetworkBase
 {
-    @display("bgb=815,390");
-//    parameters:
-//        *.eth[*].bitrate = default(100Mbps);
+    parameters:
+        *.eth[*].bitrate = default(100Mbps);
+         @display("bgb=815,390");
     submodules:
         powerTrainECU: TsnDevice {
             parameters: numEthInterfaces = 1;
