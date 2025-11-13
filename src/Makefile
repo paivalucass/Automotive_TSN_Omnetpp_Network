@@ -2,7 +2,7 @@
 # OMNeT++/OMNEST Makefile for ACC_TSN_Network
 #
 # This file was generated with the command:
-#  opp_makemake -f --deep -KINET_PROJ=../../inet -DINET_IMPORT -I/home/lucas/RCPILOTOS/mavlink/generated/include -I/home/lucas/RCPILOTOS/mavlink/install/include -L$$\(INET_PROJ\)/src -lINET$$\(D\)
+#  opp_makemake -f --deep -KINET_4_5_4_PROJ=/home/cebms/Documents/omnetpp_ws/inet-4.5.4 -DINET_IMPORT -L$$\(INET_4_5_4_PROJ\)/src -lINET$$\(D\)
 #
 
 # Name of target to be created (-o option)
@@ -17,13 +17,13 @@ USERIF_LIBS = $(ALL_ENV_LIBS) # that is, $(QTENV_LIBS) $(CMDENV_LIBS)
 #USERIF_LIBS = $(QTENV_LIBS)
 
 # C++ include paths (with -I)
-INCLUDE_PATH = -I/home/lucas/RCPILOTOS/mavlink/generated/include -I/home/lucas/RCPILOTOS/mavlink/install/include
+INCLUDE_PATH =
 
 # Additional object and library files to link with
 EXTRA_OBJS =
 
 # Additional libraries (-L, -l options)
-LIBS = $(LDFLAG_LIBPATH)$(INET_PROJ)/src  -lINET$(D)
+LIBS = $(LDFLAG_LIBPATH)$(INET_4_5_4_PROJ)/src  -lINET$(D)
 
 # Output directory
 PROJECT_OUTPUT_DIR = ../out
@@ -40,7 +40,7 @@ MSGFILES =
 SMFILES =
 
 # Other makefile variables (-K)
-INET_PROJ=../../inet
+INET_4_5_4_PROJ=/home/cebms/Documents/omnetpp_ws/inet-4.5.4
 
 #------------------------------------------------------------------------------
 
@@ -61,7 +61,7 @@ include $(CONFIGFILE)
 # Simulation kernel and user interface libraries
 OMNETPP_LIBS = $(OPPMAIN_LIB) $(USERIF_LIBS) $(KERNEL_LIBS) $(SYS_LIBS)
 ifneq ($(PLATFORM),win32)
-LIBS += -Wl,-rpath,$(abspath $(INET_PROJ)/src)
+LIBS += -Wl,-rpath,$(abspath $(INET_4_5_4_PROJ)/src)
 endif
 
 COPTS = $(CFLAGS) $(IMPORT_DEFINES) -DINET_IMPORT $(INCLUDE_PATH) -I$(OMNETPP_INCL_DIR)
