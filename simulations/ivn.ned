@@ -24,7 +24,7 @@ import inet.node.tsn.TsnClock;
 //
 // TODO documentation
 //
-network IVN_TSN_Network extends TsnNetworkBase
+network IVN_Network extends TsnNetworkBase
 {
     parameters:
         *.eth[*].bitrate = default(100Mbps);
@@ -45,17 +45,10 @@ network IVN_TSN_Network extends TsnNetworkBase
         tsnSwitch: <default("TsnSwitch")> like IEthernetNetworkNode {
             @display("p=510,209");
         }
-        tsnClock: TsnClock {
-            parameters:
-                numEthInterfaces = 1;
-                @display("p=356,253");
-        }
     connections:
         powerTrainECU.ethg++ <--> EthernetLink <--> tsnSwitch.ethg++;
         adaptiveCruiseControlECU.ethg++ <--> EthernetLink <--> tsnSwitch.ethg++;
         infotainmentECU.ethg++ <--> EthernetLink <--> tsnSwitch.ethg++;
         escECU.ethg++ <--> EthernetLink <--> tsnSwitch.ethg++;
-
-        tsnClock.ethg++ <--> EthernetLink <--> tsnSwitch.ethg++;
 }
 
