@@ -44,7 +44,7 @@ git clone https://github.com/paivalucass/Automotive_TSN_Omnetpp_Network.git
 
 In the Omnet++ interface, go to:
 
-**Files > Import > General > Existing Projects into Workspace**
+*Files > Import > General > Existing Projects into Workspace*
 
 Select the directory where you cloned the repository.
 
@@ -52,7 +52,7 @@ Select the directory where you cloned the repository.
 
 In the Omnet++ Workspace, right click this project's folder and go to:
 
-**Preferences > Project references**
+*Preferences > Project references*
 
 Mark the INET library as a project reference.
 
