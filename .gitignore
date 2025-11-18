@@ -16,7 +16,8 @@
 *.sca
 *.vec
 *.vci
-*.csv
+*.anf
+# *.csv
 *.txt # If your simulations output text logs
 
 # IDE generated files (Eclipse based)
