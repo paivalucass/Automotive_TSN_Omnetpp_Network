@@ -1,6 +1,6 @@
 # Omnet++ Automotive TSN Network
 
-## 💻 Network Requirements
+## Network Requirements
 
 ### OMNeT++ 6.3.0
 
